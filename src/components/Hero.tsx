@@ -20,17 +20,12 @@ const Hero = () => {
       {/* Content */}
       <div className="relative z-10 container mx-auto px-6 lg:px-12">
         <div className="max-w-3xl">
-          {/* Season Tag */}
-          <div className="overflow-hidden mb-6">
-            <p className="font-body text-sm tracking-[0.3em] uppercase text-primary opacity-0 animate-fade-up">
-              Winter Collection 2025
-            </p>
-          </div>
+        
 
           {/* Main Headline */}
           <div className="overflow-hidden mb-4">
             <h1 className="font-display text-5xl md:text-7xl lg:text-8xl font-medium text-foreground leading-[0.95] opacity-0 animate-fade-up stagger-1">
-              Refined
+              KLVORA
             </h1>
           </div>
           <div className="overflow-hidden mb-8">
