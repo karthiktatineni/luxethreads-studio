@@ -37,9 +37,13 @@ const Navbar = () => {
       <div className="container mx-auto px-6 lg:px-12">
         <div className="flex items-center justify-between h-20 lg:h-24">
           {/* Logo */}
-          <Link to="/" className="font-display text-2xl lg:text-3xl tracking-wide text-foreground">
-            KLVORA
-          </Link>
+          <Link
+  to="/"
+  className="font-display text-2xl lg:text-3xl tracking-wide text-gold"
+>
+  KLVORA
+</Link>
+
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center gap-12">
