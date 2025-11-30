@@ -19,7 +19,7 @@ interface OrderData {
   items: OrderItem[];
 }
 
-export const handler: Handler = async (event) => {
+export const handler: Handler = async (event: { httpMethod: string; body: any; }) => {
   if (event.httpMethod !== "POST") {
     return {
       statusCode: 405,
@@ -28,6 +28,7 @@ export const handler: Handler = async (event) => {
   }
 
   try {
+    // Parse incoming order data from frontend
     const data: OrderData = JSON.parse(event.body || "{}");
 
     // Insert order into 'orders' table
@@ -37,7 +38,7 @@ export const handler: Handler = async (event) => {
       RETURNING *
     `;
 
-    // Insert items into 'order_items' table
+    // Insert each item into 'order_items' table
     for (const item of data.items) {
       await sql`
         INSERT INTO order_items (order_id, product_name, quantity, price)
@@ -45,6 +46,7 @@ export const handler: Handler = async (event) => {
       `;
     }
 
+    // Return success response with inserted order ID
     return {
       statusCode: 200,
       body: JSON.stringify({ success: true, orderId: order.id }),
