@@ -118,3 +118,12 @@ export default {
   },
   plugins: [require("tailwindcss-animate")],
 } satisfies Config;
+module.exports = {
+  theme: {
+    extend: {
+      colors: {
+        gold: '#FFD700', // Custom gold color
+      },
+    },
+  },
+};
