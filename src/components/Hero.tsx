@@ -30,15 +30,15 @@ const Hero = () => {
           </div>
           <div className="overflow-hidden mb-8">
             <h1 className="font-display text-5xl md:text-7xl lg:text-8xl font-medium italic text-primary leading-[0.95] opacity-0 animate-fade-up stagger-2">
-              Menswear
+              Fashionwear
             </h1>
           </div>
 
           {/* Subtitle */}
           <div className="overflow-hidden mb-12">
             <p className="font-body text-lg md:text-xl text-muted-foreground max-w-lg leading-relaxed opacity-0 animate-fade-up stagger-3">
-              Discover our curated collection of contemporary luxury fashion for 
-              the modern gentleman. Impeccable tailoring meets timeless design.
+              Discover our curated collection of contemporary luxury and Street fashion for 
+              the modern wear. Impeccable tailoring meets timeless design.
             </p>
           </div>
 
