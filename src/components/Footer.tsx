@@ -11,8 +11,6 @@ const Footer = () => {
     ],
     company: [
       { name: "About Us", href: "/#about" },
-      { name: "Careers", href: "/contact" },
-      { name: "Sustainability", href: "/contact" },
       { name: "Press", href: "/contact" },
     ],
     support: [
@@ -35,7 +33,7 @@ const Footer = () => {
             </Link>
             <p className="font-body text-muted-foreground mt-6 max-w-sm leading-relaxed">
               Redefining contemporary men's fashion with timeless elegance 
-              and uncompromising quality since 2018.
+              and uncompromising quality since 2025.
             </p>
             {/* Social Links */}
             <div className="flex gap-4 mt-8">
