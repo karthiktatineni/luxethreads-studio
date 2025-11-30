@@ -70,7 +70,7 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
-        gold: "#484220ff", // ✅ Added gold color
+        gold: "#FFD700", // ✅ Added gold color
       },
       fontFamily: {
         display: ["'Playfair Display'", "serif"],
