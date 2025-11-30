@@ -1,13 +1,22 @@
 import { Handler } from "@netlify/functions";
 import { neon } from "@netlify/neon";
+import Twilio from "twilio";
 
-// Connect to Neon DB using environment variable
 const sql = neon();
+
+// Correct Twilio credentials from environment variables
+// Make sure you have set these in Netlify or your local .env file
+const accountSid = process.env.TWILIO_ACCOUNT_SID!;
+const authToken = process.env.TWILIO_AUTH_TOKEN!;
+const twilioClient = Twilio(accountSid, authToken);
+const twilioNumber = "whatsapp:" + process.env.TWILIO_WHATSAPP_NUMBER!;
 
 interface OrderItem {
   name: string;
   qty: number;
   price: number;
+  size?: string;
+  color?: string;
 }
 
 interface OrderData {
@@ -19,26 +28,22 @@ interface OrderData {
   items: OrderItem[];
 }
 
-export const handler: Handler = async (event: { httpMethod: string; body: any; }) => {
+export const handler: Handler = async (event) => {
   if (event.httpMethod !== "POST") {
-    return {
-      statusCode: 405,
-      body: "Method Not Allowed",
-    };
+    return { statusCode: 405, body: "Method Not Allowed" };
   }
 
   try {
-    // Parse incoming order data from frontend
     const data: OrderData = JSON.parse(event.body || "{}");
 
-    // Insert order into 'orders' table
+    // Insert order with 'pending' status
     const [order] = await sql`
-      INSERT INTO orders (customer_name, phone, email, address, total_price)
-      VALUES (${data.name}, ${data.phone}, ${data.email}, ${data.address}, ${data.total})
+      INSERT INTO orders (customer_name, phone, email, address, total_price, status)
+      VALUES (${data.name}, ${data.phone}, ${data.email}, ${data.address}, ${data.total}, 'pending')
       RETURNING *
     `;
 
-    // Insert each item into 'order_items' table
+    // Insert each item
     for (const item of data.items) {
       await sql`
         INSERT INTO order_items (order_id, product_name, quantity, price)
@@ -46,10 +51,34 @@ export const handler: Handler = async (event: { httpMethod: string; body: any; }
       `;
     }
 
-    // Return success response with inserted order ID
+    // Build WhatsApp message
+    const itemsText = data.items
+      .map(
+        (i) =>
+          `${i.qty}x ${i.name} ${i.size ? `(${i.size})` : ""} ${
+            i.color ? `(${i.color})` : ""
+          } ($${i.price})`
+      )
+      .join("\n");
+
+    const messageBody = `Hello ${data.name},\n\nYou have ordered:\n${itemsText}\n\nShipping Address: ${data.address}\nTotal: $${data.total}\n\nReply YES to confirm your order or NO to cancel.`;
+
+    // Send WhatsApp message
+    await twilioClient.messages.create({
+      from: twilioNumber,
+      to: "whatsapp:" + data.phone,
+      body: messageBody,
+    });
+
     return {
       statusCode: 200,
-      body: JSON.stringify({ success: true, orderId: order.id }),
+      body: JSON.stringify({
+        success: true,
+        order: {
+          ...order,
+          items: data.items,
+        },
+      }),
     };
   } catch (err: any) {
     console.error("Error creating order:", err);
