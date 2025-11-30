@@ -1,7 +1,6 @@
 import { Handler } from "@netlify/functions";
 import { neon } from "@netlify/neon";
 
-// Connect to Neon DB using environment variable
 const sql = neon();
 
 interface OrderItem {
@@ -19,26 +18,22 @@ interface OrderData {
   items: OrderItem[];
 }
 
-export const handler: Handler = async (event: { httpMethod: string; body: any; }) => {
+export const handler: Handler = async (event) => {
   if (event.httpMethod !== "POST") {
-    return {
-      statusCode: 405,
-      body: "Method Not Allowed",
-    };
+    return { statusCode: 405, body: "Method Not Allowed" };
   }
 
   try {
-    // Parse incoming order data from frontend
     const data: OrderData = JSON.parse(event.body || "{}");
 
-    // Insert order into 'orders' table
+    // Insert order
     const [order] = await sql`
       INSERT INTO orders (customer_name, phone, email, address, total_price)
       VALUES (${data.name}, ${data.phone}, ${data.email}, ${data.address}, ${data.total})
       RETURNING *
     `;
 
-    // Insert each item into 'order_items' table
+    // Insert items
     for (const item of data.items) {
       await sql`
         INSERT INTO order_items (order_id, product_name, quantity, price)
@@ -46,16 +41,25 @@ export const handler: Handler = async (event: { httpMethod: string; body: any; }
       `;
     }
 
-    // Return success response with inserted order ID
+    // Fetch inserted items
+    const items = await sql`
+      SELECT product_name, quantity, price
+      FROM order_items
+      WHERE order_id = ${order.id}
+    `;
+
     return {
       statusCode: 200,
-      body: JSON.stringify({ success: true, orderId: order.id }),
+      body: JSON.stringify({
+        success: true,
+        order: {
+          ...order,
+          items
+        }
+      }),
     };
   } catch (err: any) {
     console.error("Error creating order:", err);
-    return {
-      statusCode: 500,
-      body: JSON.stringify({ success: false, error: err.message }),
-    };
+    return { statusCode: 500, body: JSON.stringify({ success: false, error: err.message }) };
   }
 };
