@@ -2,10 +2,16 @@ import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/co
 import { Button } from "@/components/ui/button";
 import { useCart } from "@/context/CartContext";
 import { ShoppingBag, X, Plus, Minus } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Cart = () => {
   const { items, removeItem, updateQuantity, totalItems, totalPrice } = useCart();
+  const navigate = useNavigate();
+
+  const handleCheckout = () => {
+    // Navigate to checkout page with cart state
+    navigate("/checkout", { state: { cartItems: items, totalPrice } });
+  };
 
   return (
     <Sheet>
@@ -19,11 +25,12 @@ const Cart = () => {
           )}
         </Button>
       </SheetTrigger>
+
       <SheetContent className="w-full sm:max-w-lg bg-background border-border">
         <SheetHeader>
           <SheetTitle className="font-display text-2xl text-foreground">Shopping Bag</SheetTitle>
         </SheetHeader>
-        
+
         {items.length === 0 ? (
           <div className="flex flex-col items-center justify-center h-[60vh] text-center">
             <ShoppingBag className="w-16 h-16 text-muted-foreground mb-4" />
@@ -105,7 +112,7 @@ const Cart = () => {
                 </div>
               ))}
             </div>
-            
+
             <div className="border-t border-border pt-6 space-y-4">
               <div className="flex justify-between font-body">
                 <span className="text-muted-foreground">Subtotal</span>
@@ -114,9 +121,16 @@ const Cart = () => {
               <p className="font-body text-xs text-muted-foreground">
                 Shipping and taxes calculated at checkout
               </p>
-              <Button variant="champagne" className="w-full" size="lg">
+              {/* Updated Checkout Button */}
+              <Button
+                variant="champagne"
+                className="w-full"
+                size="lg"
+                onClick={handleCheckout}
+              >
                 Checkout
               </Button>
+
               <SheetTrigger asChild>
                 <Button variant="outline" className="w-full">
                   Continue Shopping
