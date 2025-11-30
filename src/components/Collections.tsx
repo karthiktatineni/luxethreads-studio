@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import collection1 from "@/assets/collection-1.jpg";
 import collection2 from "@/assets/collection-2.jpg";
 import collection3 from "@/assets/collection-3.jpg";
@@ -6,24 +7,24 @@ import { ArrowUpRight } from "lucide-react";
 const collections = [
   {
     id: 1,
-    title: "Noir",
-    subtitle: "Evening Wear",
-    image: collection1,
-    description: "Sophisticated black ensembles for the modern woman",
+    title: "Tailored",
+    subtitle: "Formal Wear",
+    image: collection3,
+    description: "Impeccably crafted suits and blazers for the modern gentleman",
   },
   {
     id: 2,
-    title: "Lumière",
-    subtitle: "Resort Collection",
+    title: "Resort",
+    subtitle: "Summer Collection",
     image: collection2,
-    description: "Flowing silhouettes in ethereal cream tones",
+    description: "Relaxed elegance in premium linens and light fabrics",
   },
   {
     id: 3,
-    title: "Atelier",
-    subtitle: "Tailored Pieces",
-    image: collection3,
-    description: "Structured elegance meets contemporary design",
+    title: "Noir",
+    subtitle: "Evening Wear",
+    image: collection1,
+    description: "Sophisticated black ensembles for distinguished occasions",
   },
 ];
 
@@ -49,10 +50,11 @@ const Collections = () => {
 
         {/* Collections Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-          {collections.map((collection, index) => (
-            <article
+        {collections.map((collection, index) => (
+            <Link
+              to="/collections"
               key={collection.id}
-              className="group cursor-pointer"
+              className="group cursor-pointer block"
               style={{ animationDelay: `${index * 0.15}s` }}
             >
               {/* Image Container */}
@@ -78,7 +80,7 @@ const Collections = () => {
                   <ArrowUpRight className="w-4 h-4 text-foreground group-hover:text-primary-foreground transition-colors duration-300" />
                 </div>
               </div>
-            </article>
+            </Link>
           ))}
         </div>
       </div>

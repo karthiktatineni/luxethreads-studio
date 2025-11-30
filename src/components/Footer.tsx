@@ -1,40 +1,41 @@
+import { Link } from "react-router-dom";
 import { Instagram, Facebook, Twitter } from "lucide-react";
 
 const Footer = () => {
   const footerLinks = {
     shop: [
-      { name: "New Arrivals", href: "#" },
-      { name: "Collections", href: "#collections" },
-      { name: "Best Sellers", href: "#" },
-      { name: "Sale", href: "#" },
+      { name: "New Arrivals", href: "/new-arrivals" },
+      { name: "Collections", href: "/collections" },
+      { name: "Best Sellers", href: "/collections" },
+      { name: "Sale", href: "/collections" },
     ],
     company: [
-      { name: "About Us", href: "#about" },
-      { name: "Careers", href: "#" },
-      { name: "Sustainability", href: "#" },
-      { name: "Press", href: "#" },
+      { name: "About Us", href: "/#about" },
+      { name: "Careers", href: "/contact" },
+      { name: "Sustainability", href: "/contact" },
+      { name: "Press", href: "/contact" },
     ],
     support: [
-      { name: "Contact", href: "#contact" },
-      { name: "Shipping", href: "#" },
-      { name: "Returns", href: "#" },
-      { name: "Size Guide", href: "#" },
+      { name: "Contact", href: "/contact" },
+      { name: "Shipping", href: "/contact" },
+      { name: "Returns", href: "/contact" },
+      { name: "Size Guide", href: "/contact" },
     ],
   };
 
   return (
-    <footer id="contact" className="bg-card border-t border-border">
+    <footer className="bg-card border-t border-border">
       <div className="container mx-auto px-6 lg:px-12">
         {/* Main Footer */}
         <div className="py-16 lg:py-24 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12">
           {/* Brand */}
           <div className="lg:col-span-2">
-            <a href="/" className="font-display text-3xl tracking-wide text-foreground">
-              ÉLÉGANCE
-            </a>
+            <Link to="/" className="font-display text-3xl tracking-wide text-foreground">
+              KLVORA
+            </Link>
             <p className="font-body text-muted-foreground mt-6 max-w-sm leading-relaxed">
-              Redefining contemporary luxury fashion with timeless elegance 
-              and uncompromising quality since 2015.
+              Redefining contemporary men's fashion with timeless elegance 
+              and uncompromising quality since 2018.
             </p>
             {/* Social Links */}
             <div className="flex gap-4 mt-8">
@@ -70,12 +71,12 @@ const Footer = () => {
             <ul className="space-y-4">
               {footerLinks.shop.map((link) => (
                 <li key={link.name}>
-                  <a
-                    href={link.href}
+                  <Link
+                    to={link.href}
                     className="font-body text-muted-foreground hover:text-primary transition-colors duration-300"
                   >
                     {link.name}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -88,12 +89,12 @@ const Footer = () => {
             <ul className="space-y-4">
               {footerLinks.company.map((link) => (
                 <li key={link.name}>
-                  <a
-                    href={link.href}
+                  <Link
+                    to={link.href}
                     className="font-body text-muted-foreground hover:text-primary transition-colors duration-300"
                   >
                     {link.name}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -106,12 +107,12 @@ const Footer = () => {
             <ul className="space-y-4">
               {footerLinks.support.map((link) => (
                 <li key={link.name}>
-                  <a
-                    href={link.href}
+                  <Link
+                    to={link.href}
                     className="font-body text-muted-foreground hover:text-primary transition-colors duration-300"
                   >
                     {link.name}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -121,15 +122,15 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className="py-8 border-t border-border flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="font-body text-sm text-muted-foreground">
-            © 2025 Élégance. All rights reserved.
+            © 2025 Klvora. All rights reserved.
           </p>
           <div className="flex gap-6">
-            <a href="#" className="font-body text-sm text-muted-foreground hover:text-primary transition-colors duration-300">
+            <Link to="/contact" className="font-body text-sm text-muted-foreground hover:text-primary transition-colors duration-300">
               Privacy Policy
-            </a>
-            <a href="#" className="font-body text-sm text-muted-foreground hover:text-primary transition-colors duration-300">
+            </Link>
+            <Link to="/contact" className="font-body text-sm text-muted-foreground hover:text-primary transition-colors duration-300">
               Terms of Service
-            </a>
+            </Link>
           </div>
         </div>
       </div>
