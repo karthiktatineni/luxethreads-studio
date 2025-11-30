@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import collection3 from "@/assets/collection-3.jpg";
+import { Link } from "react-router-dom";
 
 const About = () => {
   return (
@@ -11,7 +12,7 @@ const About = () => {
             <div className="image-reveal aspect-[4/5] overflow-hidden">
               <img
                 src={collection3}
-                alt="Elegant fashion model showcasing tailored blazer"
+                alt="Klvora tailored menswear - charcoal blazer"
                 className="w-full h-full object-cover"
               />
             </div>
@@ -23,19 +24,19 @@ const About = () => {
               Our Story
             </p>
             <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-foreground mb-8 leading-tight">
-              Crafted with
-              <span className="italic text-primary"> Passion</span>
+              Crafted for
+              <span className="italic text-primary"> Distinction</span>
             </h2>
             <div className="space-y-6 text-muted-foreground leading-relaxed">
               <p className="font-body text-lg">
-                Founded in 2015, Élégance emerged from a vision to redefine contemporary 
-                luxury fashion. Our philosophy centers on the belief that true elegance 
-                lies in simplicity and impeccable craftsmanship.
+                Founded in 2018, Klvora emerged from a vision to redefine contemporary 
+                men's fashion. Our philosophy centers on the belief that true elegance 
+                lies in exceptional craftsmanship and timeless design.
               </p>
               <p className="font-body">
-                Every piece in our collection is thoughtfully designed in Paris and 
+                Every piece in our collection is thoughtfully designed and 
                 meticulously crafted by skilled artisans using only the finest materials. 
-                We believe in slow fashion—creating timeless pieces that transcend seasons 
+                We believe in slow fashion—creating investment pieces that transcend seasons 
                 and trends.
               </p>
             </div>
@@ -43,28 +44,30 @@ const About = () => {
             {/* Stats */}
             <div className="grid grid-cols-3 gap-8 mt-12 pt-12 border-t border-border">
               <div>
-                <p className="font-display text-3xl lg:text-4xl text-primary mb-2">10+</p>
+                <p className="font-display text-3xl lg:text-4xl text-primary mb-2">7+</p>
                 <p className="font-body text-sm text-muted-foreground tracking-wide uppercase">
                   Years
                 </p>
               </div>
               <div>
-                <p className="font-display text-3xl lg:text-4xl text-primary mb-2">50k</p>
+                <p className="font-display text-3xl lg:text-4xl text-primary mb-2">25k</p>
                 <p className="font-body text-sm text-muted-foreground tracking-wide uppercase">
                   Clients
                 </p>
               </div>
               <div>
-                <p className="font-display text-3xl lg:text-4xl text-primary mb-2">30+</p>
+                <p className="font-display text-3xl lg:text-4xl text-primary mb-2">40+</p>
                 <p className="font-body text-sm text-muted-foreground tracking-wide uppercase">
                   Countries
                 </p>
               </div>
             </div>
 
-            <Button variant="hero" className="mt-12">
-              Discover More
-            </Button>
+            <Link to="/contact">
+              <Button variant="hero" className="mt-12">
+                Get in Touch
+              </Button>
+            </Link>
           </div>
         </div>
       </div>

@@ -10,7 +10,7 @@ const Newsletter = () => {
     e.preventDefault();
     if (email) {
       toast({
-        title: "Welcome to Élégance",
+        title: "Welcome to Klvora",
         description: "Thank you for subscribing to our newsletter.",
       });
       setEmail("");
