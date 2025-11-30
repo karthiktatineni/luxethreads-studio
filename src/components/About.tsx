@@ -29,7 +29,7 @@ const About = () => {
             </h2>
             <div className="space-y-6 text-muted-foreground leading-relaxed">
               <p className="font-body text-lg">
-                Founded in 2018, Klvora emerged from a vision to redefine contemporary 
+                Founded in 2025, Klvora emerged from a vision to redefine contemporary 
                 men's fashion. Our philosophy centers on the belief that true elegance 
                 lies in exceptional craftsmanship and timeless design.
               </p>
@@ -42,26 +42,7 @@ const About = () => {
             </div>
 
             {/* Stats */}
-            <div className="grid grid-cols-3 gap-8 mt-12 pt-12 border-t border-border">
-              <div>
-                <p className="font-display text-3xl lg:text-4xl text-primary mb-2">7+</p>
-                <p className="font-body text-sm text-muted-foreground tracking-wide uppercase">
-                  Years
-                </p>
-              </div>
-              <div>
-                <p className="font-display text-3xl lg:text-4xl text-primary mb-2">25k</p>
-                <p className="font-body text-sm text-muted-foreground tracking-wide uppercase">
-                  Clients
-                </p>
-              </div>
-              <div>
-                <p className="font-display text-3xl lg:text-4xl text-primary mb-2">40+</p>
-                <p className="font-body text-sm text-muted-foreground tracking-wide uppercase">
-                  Countries
-                </p>
-              </div>
-            </div>
+            
 
             <Link to="/contact">
               <Button variant="hero" className="mt-12">
