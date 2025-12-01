@@ -157,7 +157,7 @@ const ContactPage = () => {
                       Phone
                     </h3>
                     <p className="font-body text-muted-foreground">
-                      +1 (212) 555-0123
+                      +91 91821 25082
                     </p>
                   </div>
                 </div>
@@ -170,7 +170,7 @@ const ContactPage = () => {
                       Email
                     </h3>
                     <p className="font-body text-muted-foreground">
-                      hello@klvora.com
+                      klvorafashion@gmail.com
                     </p>
                   </div>
                 </div>
