@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import Cart from "@/components/Cart";
+import klvoraLogo from "@/assets/klvora-logo.png";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -37,12 +38,13 @@ const Navbar = () => {
       <div className="container mx-auto px-6 lg:px-12">
         <div className="flex items-center justify-between h-20 lg:h-24">
           {/* Logo */}
-          <Link
-  to="/"
-  className="font-display text-2xl lg:text-3xl tracking-wide text-gold"
->
-  KLVORA
-</Link>
+          <Link to="/" className="flex items-center">
+            <img 
+              src={klvoraLogo} 
+              alt="Klvora Fashion Hub" 
+              className="h-14 lg:h-16 w-auto object-contain"
+            />
+          </Link>
 
 
           {/* Desktop Navigation */}
