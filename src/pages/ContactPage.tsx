@@ -196,12 +196,7 @@ const ContactPage = () => {
                   Quick Help
                 </h3>
                 <div className="space-y-4">
-                  <div>
-                    <h4 className="font-body text-foreground mb-1">Shipping</h4>
-                    <p className="font-body text-sm text-muted-foreground">
-                      Free shipping on orders over $200. Standard delivery 3-5 business days.
-                    </p>
-                  </div>
+                  
                   <div>
                     <h4 className="font-body text-foreground mb-1">Returns</h4>
                     <p className="font-body text-sm text-muted-foreground">
