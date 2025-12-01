@@ -3,16 +3,16 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ProductCard from "@/components/ProductCard";
 import { products, collections } from "@/data/products";
-import collection1 from "@/assets/collection-1.jpg";
-import collection2 from "@/assets/collection-2.jpg";
-import collection3 from "@/assets/collection-3.jpg";
+import collectionMens from "@/assets/collection-mens.jpg";
+import collectionWomens from "@/assets/collection-womens.jpg";
+import collectionKids from "@/assets/collection-kids.jpg";
 import { ArrowUpRight } from "lucide-react";
 
 const collectionImages: Record<string, string> = {
-  tailored: collection3,
-  essentials: collection2,
-  knitwear: collection1,
-  outerwear: collection1,
+  mens: collectionMens,
+  womens: collectionWomens,
+  kids: collectionKids,
+  streetwear: collectionMens,
 };
 
 const CollectionsPage = () => {
@@ -30,8 +30,8 @@ const CollectionsPage = () => {
             Collections
           </h1>
           <p className="font-body text-lg text-muted-foreground max-w-xl mt-6 leading-relaxed opacity-0 animate-fade-up stagger-2">
-            Discover our carefully curated collections, each telling a unique story 
-            of craftsmanship and timeless style.
+            Discover our carefully curated collections for men, women, and kids. 
+            Each piece tells a unique story of style and quality.
           </p>
         </div>
       </section>
@@ -47,7 +47,7 @@ const CollectionsPage = () => {
                 className="group relative aspect-[4/5] overflow-hidden"
               >
                 <img
-                  src={collectionImages[collection.id] || collection1}
+                  src={collectionImages[collection.id] || collectionMens}
                   alt={collection.name}
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
@@ -86,7 +86,7 @@ const CollectionsPage = () => {
               </h2>
             </div>
             <p className="font-body text-muted-foreground max-w-md mt-4 lg:mt-0">
-              Browse our complete selection of premium menswear.
+              Browse our complete selection of premium fashion for everyone.
             </p>
           </div>
 

@@ -1,30 +1,30 @@
 import { Link } from "react-router-dom";
-import collection1 from "@/assets/collection-1.jpg";
-import collection2 from "@/assets/collection-2.jpg";
-import collection3 from "@/assets/collection-3.jpg";
+import collectionMens from "@/assets/collection-mens.jpg";
+import collectionWomens from "@/assets/collection-womens.jpg";
+import collectionKids from "@/assets/collection-kids.jpg";
 import { ArrowUpRight } from "lucide-react";
 
 const collections = [
   {
     id: 1,
-    title: "Tailored",
-    subtitle: "Formal Wear",
-    image: collection3,
-    description: "Impeccably crafted suits and blazers for the modern gentleman",
+    title: "Men's",
+    subtitle: "Men's Collection",
+    image: collectionMens,
+    description: "Bold streetwear and refined styles for the modern man",
   },
   {
     id: 2,
-    title: "Resort",
-    subtitle: "Summer Collection",
-    image: collection2,
-    description: "Relaxed elegance in premium linens and light fabrics",
+    title: "Women's",
+    subtitle: "Women's Collection",
+    image: collectionWomens,
+    description: "Elegant and trendy fashion for the contemporary woman",
   },
   {
     id: 3,
-    title: "Noir",
-    subtitle: "Evening Wear",
-    image: collection1,
-    description: "Sophisticated black ensembles for distinguished occasions",
+    title: "Kids",
+    subtitle: "Kids Collection",
+    image: collectionKids,
+    description: "Fun and stylish clothing for the little fashionistas",
   },
 ];
 
