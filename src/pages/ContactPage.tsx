@@ -142,9 +142,7 @@ const ContactPage = () => {
                       Flagship Store
                     </h3>
                     <p className="font-body text-muted-foreground">
-                      123 Madison Avenue<br />
-                      New York, NY 10016<br />
-                      United States
+                    
                     </p>
                   </div>
                 </div>
@@ -200,7 +198,7 @@ const ContactPage = () => {
                   <div>
                     <h4 className="font-body text-foreground mb-1">Returns</h4>
                     <p className="font-body text-sm text-muted-foreground">
-                      30-day return policy on all unworn items with original tags.
+                      10-day return policy on all unworn items with original tags.
                     </p>
                   </div>
                   <div>
