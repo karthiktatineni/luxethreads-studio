@@ -14,13 +14,40 @@ const ContactPage = () => {
   });
   const { toast } = useToast();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    toast({
-      title: "Message Sent",
-      description: "Thank you for reaching out. We'll respond within 24 hours.",
-    });
-    setFormData({ name: "", email: "", subject: "", message: "" });
+
+    try {
+      const response = await fetch("https://formspree.io/f/xyzrjgoo", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        toast({
+          title: "Message Sent",
+          description: "Thank you for reaching out. We'll respond within 24 hours.",
+        });
+
+        setFormData({ name: "", email: "", subject: "", message: "" });
+      } else {
+        toast({
+          title: "Submission Failed",
+          description: "Something went wrong. Try again later.",
+          variant: "destructive",
+        });
+      }
+    } catch (error) {
+      toast({
+        title: "Network Error",
+        description: "Unable to send message right now.",
+        variant: "destructive",
+      });
+    }
   };
 
   const handleChange = (
@@ -32,7 +59,7 @@ const ContactPage = () => {
   return (
     <main className="bg-background min-h-screen">
       <Navbar />
-      
+
       {/* Hero */}
       <section className="pt-32 pb-16 lg:pt-40 lg:pb-24">
         <div className="container mx-auto px-6 lg:px-12">
@@ -43,7 +70,7 @@ const ContactPage = () => {
             Contact Us
           </h1>
           <p className="font-body text-lg text-muted-foreground max-w-xl mt-6 leading-relaxed opacity-0 animate-fade-up stagger-2">
-            We're here to help. Reach out with any questions about orders, 
+            We're here to help. Reach out with any questions about orders,
             products, or anything else.
           </p>
         </div>
@@ -89,6 +116,7 @@ const ContactPage = () => {
                     />
                   </div>
                 </div>
+
                 <div>
                   <label className="block font-body text-sm tracking-widest uppercase text-foreground mb-3">
                     Subject
@@ -107,6 +135,7 @@ const ContactPage = () => {
                     <option value="other">Other</option>
                   </select>
                 </div>
+
                 <div>
                   <label className="block font-body text-sm tracking-widest uppercase text-foreground mb-3">
                     Message
@@ -121,13 +150,14 @@ const ContactPage = () => {
                     placeholder="How can we help you?"
                   />
                 </div>
+
                 <Button type="submit" variant="champagne" size="lg">
                   Send Message
                 </Button>
               </form>
             </div>
 
-            {/* Contact Info */}
+            {/* Right side (unchanged) */}
             <div>
               <h2 className="font-display text-3xl text-foreground mb-8">
                 Visit Us
@@ -141,11 +171,10 @@ const ContactPage = () => {
                     <h3 className="font-body text-sm tracking-widest uppercase text-foreground mb-2">
                       Flagship Store
                     </h3>
-                    <p className="font-body text-muted-foreground">
-                    
-                    </p>
+                    <p className="font-body text-muted-foreground"></p>
                   </div>
                 </div>
+
                 <div className="flex gap-4">
                   <div className="w-12 h-12 rounded-full border border-border flex items-center justify-center flex-shrink-0">
                     <Phone className="w-5 h-5 text-primary" />
@@ -159,6 +188,7 @@ const ContactPage = () => {
                     </p>
                   </div>
                 </div>
+
                 <div className="flex gap-4">
                   <div className="w-12 h-12 rounded-full border border-border flex items-center justify-center flex-shrink-0">
                     <Mail className="w-5 h-5 text-primary" />
@@ -172,6 +202,7 @@ const ContactPage = () => {
                     </p>
                   </div>
                 </div>
+
                 <div className="flex gap-4">
                   <div className="w-12 h-12 rounded-full border border-border flex items-center justify-center flex-shrink-0">
                     <Clock className="w-5 h-5 text-primary" />
@@ -193,8 +224,8 @@ const ContactPage = () => {
                 <h3 className="font-display text-2xl text-foreground mb-6">
                   Quick Help
                 </h3>
+
                 <div className="space-y-4">
-                  
                   <div>
                     <h4 className="font-body text-foreground mb-1">Returns</h4>
                     <p className="font-body text-sm text-muted-foreground">
@@ -210,6 +241,7 @@ const ContactPage = () => {
                 </div>
               </div>
             </div>
+
           </div>
         </div>
       </section>
