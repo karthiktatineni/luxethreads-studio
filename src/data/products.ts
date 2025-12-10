@@ -30,6 +30,7 @@ export interface Product {
   isNew?: boolean;
   isBestSeller?: boolean;
   collection?: string;
+  gender?: "mens" | "womens" | "kids" | "unisex";
 }
 
 export const products: Product[] = [
@@ -50,7 +51,8 @@ export const products: Product[] = [
     colors: [{ name: "Black", hex: "#0a0a0a" }],
     images: [tshirtMoon],
     isNew: true,
-    collection: "Streetwear"
+    collection: "Streetwear",
+    gender: "mens"
   },
   {
     id: "golden-dragon-tee",
@@ -69,7 +71,8 @@ export const products: Product[] = [
     colors: [{ name: "Black", hex: "#0a0a0a" }],
     images: [tshirtDragon],
     isBestSeller: true,
-    collection: "Streetwear"
+    collection: "Streetwear",
+    gender: "mens"
   },
   {
     id: "mouth-graphic-tee",
@@ -88,7 +91,8 @@ export const products: Product[] = [
     colors: [{ name: "Black", hex: "#0a0a0a" }],
     images: [tshirtMouth],
     isNew: true,
-    collection: "Streetwear"
+    collection: "Streetwear",
+    gender: "womens"
   },
   {
     id: "statue-art-tee",
@@ -106,7 +110,8 @@ export const products: Product[] = [
     sizes: ["S", "M", "L", "XL", "XXL"],
     colors: [{ name: "Black", hex: "#0a0a0a" }],
     images: [tshirtStatue],
-    collection: "Streetwear"
+    collection: "Streetwear",
+    gender: "womens"
   },
   {
     id: "skull-fire-tee",
@@ -126,7 +131,8 @@ export const products: Product[] = [
     colors: [{ name: "Black", hex: "#0a0a0a" }],
     images: [tshirtSkull],
     isBestSeller: true,
-    collection: "Streetwear"
+    collection: "Streetwear",
+    gender: "mens"
   },
   {
     id: "samurai-tee",
@@ -145,7 +151,8 @@ export const products: Product[] = [
     colors: [{ name: "Black", hex: "#0a0a0a" }],
     images: [tshirtSamurai],
     isNew: true,
-    collection: "Streetwear"
+    collection: "Streetwear",
+    gender: "kids"
   },
   {
     id: "unstoppable-dragon-tee",
@@ -164,7 +171,8 @@ export const products: Product[] = [
     colors: [{ name: "Black", hex: "#0a0a0a" }],
     images: [tshirtDragon2],
     isBestSeller: true,
-    collection: "Streetwear"
+    collection: "Streetwear",
+    gender: "mens"
   },
   {
     id: "oriental-dragon-tee",
@@ -182,7 +190,8 @@ export const products: Product[] = [
     sizes: ["XS", "S", "M", "L", "XL"],
     colors: [{ name: "Black", hex: "#0a0a0a" }],
     images: [tshirtDragon3],
-    collection: "Streetwear"
+    collection: "Streetwear",
+    gender: "kids"
   },
   {
     id: "authentic-tee",
@@ -201,7 +210,8 @@ export const products: Product[] = [
     colors: [{ name: "Black", hex: "#0a0a0a" }],
     images: [tshirtAuthentic],
     isNew: true,
-    collection: "Streetwear"
+    collection: "Streetwear",
+    gender: "kids"
   },
   {
     id: "navy-polo",
@@ -213,7 +223,8 @@ export const products: Product[] = [
     sizes: ["XS", "S", "M", "L", "XL", "XXL"],
     colors: [{ name: "Navy", hex: "#1e3a5f" }, { name: "White", hex: "#ffffff" }, { name: "Black", hex: "#0a0a0a" }],
     images: [product1],
-    collection: "Essentials"
+    collection: "Essentials",
+    gender: "mens"
   },
   {
     id: "oxford-shirt",
@@ -226,7 +237,8 @@ export const products: Product[] = [
     colors: [{ name: "White", hex: "#ffffff" }, { name: "Light Blue", hex: "#b3d4fc" }],
     images: [product2],
     isBestSeller: true,
-    collection: "Tailored"
+    collection: "Tailored",
+    gender: "mens"
   },
   {
     id: "leather-shoes",
@@ -239,7 +251,8 @@ export const products: Product[] = [
     sizes: ["40", "41", "42", "43", "44", "45", "46"],
     colors: [{ name: "Black", hex: "#0a0a0a" }, { name: "Cognac", hex: "#8b4513" }],
     images: [product3],
-    collection: "Footwear"
+    collection: "Footwear",
+    gender: "mens"
   },
   {
     id: "wool-trousers",
@@ -251,7 +264,8 @@ export const products: Product[] = [
     sizes: ["28", "30", "32", "34", "36", "38", "40"],
     colors: [{ name: "Charcoal", hex: "#36454f" }, { name: "Navy", hex: "#1e3a5f" }, { name: "Black", hex: "#0a0a0a" }],
     images: [product4],
-    collection: "Tailored"
+    collection: "Tailored",
+    gender: "mens"
   },
   {
     id: "cashmere-sweater",
@@ -263,7 +277,8 @@ export const products: Product[] = [
     sizes: ["S", "M", "L", "XL", "XXL"],
     colors: [{ name: "Camel", hex: "#c19a6b" }, { name: "Charcoal", hex: "#36454f" }, { name: "Navy", hex: "#1e3a5f" }],
     images: [product5],
-    collection: "Knitwear"
+    collection: "Knitwear",
+    gender: "womens"
   },
   {
     id: "navy-blazer",
@@ -275,7 +290,8 @@ export const products: Product[] = [
     sizes: ["46", "48", "50", "52", "54", "56"],
     colors: [{ name: "Navy", hex: "#1e3a5f" }, { name: "Charcoal", hex: "#36454f" }],
     images: [product6],
-    collection: "Tailored"
+    collection: "Tailored",
+    gender: "womens"
   },
   {
     id: "leather-belt",
@@ -287,7 +303,8 @@ export const products: Product[] = [
     sizes: ["85", "90", "95", "100", "105", "110"],
     colors: [{ name: "Brown", hex: "#5c4033" }, { name: "Black", hex: "#0a0a0a" }],
     images: [product7],
-    collection: "Accessories"
+    collection: "Accessories",
+    gender: "unisex"
   },
   {
     id: "essential-tee",
@@ -299,7 +316,8 @@ export const products: Product[] = [
     sizes: ["XS", "S", "M", "L", "XL", "XXL"],
     colors: [{ name: "Grey", hex: "#808080" }, { name: "White", hex: "#ffffff" }, { name: "Black", hex: "#0a0a0a" }, { name: "Navy", hex: "#1e3a5f" }],
     images: [product8],
-    collection: "Essentials"
+    collection: "Essentials",
+    gender: "unisex"
   }
 ];
 
