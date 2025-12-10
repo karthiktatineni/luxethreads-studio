@@ -1,13 +1,17 @@
 import { useState, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
-import { Menu, X } from "lucide-react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Menu, X, Search } from "lucide-react";
 import Cart from "@/components/Cart";
 import klvoraLogo from "@/assets/klvora-logo.png";
+import { Input } from "@/components/ui/input";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
   const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -29,6 +33,15 @@ const Navbar = () => {
     return location.pathname === href;
   };
 
+  const handleSearch = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (searchQuery.trim()) {
+      navigate(`/collections?search=${encodeURIComponent(searchQuery.trim())}`);
+      setSearchQuery("");
+      setIsSearchOpen(false);
+    }
+  };
+
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
@@ -45,7 +58,6 @@ const Navbar = () => {
               className="h-14 lg:h-16 w-auto object-contain"
             />
           </Link>
-
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center gap-12">
@@ -65,12 +77,49 @@ const Navbar = () => {
           </div>
 
           {/* Desktop Actions */}
-          <div className="hidden lg:flex items-center gap-6">
+          <div className="hidden lg:flex items-center gap-4">
+            {/* Search */}
+            <div className="relative">
+              {isSearchOpen ? (
+                <form onSubmit={handleSearch} className="flex items-center gap-2">
+                  <Input
+                    type="text"
+                    placeholder="Search products..."
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    className="w-48 h-9 bg-card border-border text-sm"
+                    autoFocus
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setIsSearchOpen(false)}
+                    className="text-muted-foreground hover:text-foreground"
+                  >
+                    <X className="w-4 h-4" />
+                  </button>
+                </form>
+              ) : (
+                <button
+                  onClick={() => setIsSearchOpen(true)}
+                  className="text-foreground/80 hover:text-foreground transition-colors"
+                  aria-label="Search"
+                >
+                  <Search className="w-5 h-5" />
+                </button>
+              )}
+            </div>
             <Cart />
           </div>
 
           {/* Mobile Actions */}
           <div className="flex items-center gap-4 lg:hidden">
+            <button
+              onClick={() => setIsSearchOpen(!isSearchOpen)}
+              className="text-foreground p-2"
+              aria-label="Search"
+            >
+              <Search className="w-5 h-5" />
+            </button>
             <Cart />
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -81,6 +130,28 @@ const Navbar = () => {
             </button>
           </div>
         </div>
+
+        {/* Mobile Search Bar */}
+        {isSearchOpen && (
+          <div className="lg:hidden pb-4">
+            <form onSubmit={handleSearch} className="flex items-center gap-2">
+              <Input
+                type="text"
+                placeholder="Search products..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="flex-1 h-10 bg-card border-border"
+                autoFocus
+              />
+              <button
+                type="submit"
+                className="px-4 py-2 bg-primary text-primary-foreground rounded-md text-sm"
+              >
+                Search
+              </button>
+            </form>
+          </div>
+        )}
       </div>
 
       {/* Mobile Menu */}
