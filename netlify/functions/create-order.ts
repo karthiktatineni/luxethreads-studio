@@ -2,7 +2,7 @@ import { Handler } from "@netlify/functions";
 import { neon } from "@netlify/neon";
 
 // Connect to Neon DB using environment variable
-const sql = neon();
+const sql = neon(process.env.DATABASE_URL);
 
 interface OrderItem {
   name: string;
